@@ -72,13 +72,18 @@ Total de contas: 2
 ```
 
 ## Tecnologias
-**Java**\
-Projeto 100% pronto para evoluir para:
-- Spring Boot 
-- JPA / Hibernate 
-- PostgreSQL / H2 
-- Testes com JUnit 
-- API REST
+Java \
+BigDecimal \
+Clean%20Code
+
+## Próximos passos
+- Transformar em API REST com Spring Boot
+- Persistência com JPA/Hibernate + PostgreSQL 
+- Testes unitários com JUnit 5 + Mockito 
+- Docker + GitHub Actions 
+- Autenticação JWT, transações, extrato, etc.
+
+**Este não é mais um "exercício de faculdade". É um modelo de domínio bancário brasileiro real, robusto e profissional — pronto para virar produto.**
 
 Feito com carinho por  
 **Matheus H. S. Trindade**\
