@@ -8,8 +8,9 @@ public class Conta {
     private static long proximoId = 1L;
     private final Long id;
     private BigDecimal saldo;
+    private Cliente titular;
 
-    public Conta(BigDecimal saldoInicial) {
+    public Conta(Cliente titular, BigDecimal saldoInicial) {
         if (saldoInicial == null) {
             throw new IllegalArgumentException("Saldo inicial não pode ser nulo.");
         }
@@ -21,6 +22,7 @@ public class Conta {
 
         this.id = proximoId++;
         this.saldo = saldoInicial.setScale(2, RoundingMode.HALF_EVEN);
+        titular.adicionarConta(this);
     }
 
     // Getters
@@ -30,6 +32,13 @@ public class Conta {
 
     public BigDecimal getSaldo() {
         return saldo;
+    }
+
+    public Cliente getTitular() { return titular; }
+
+    // Setter privado (só o Cliente pode definir o titular)
+    void setTitular(Cliente titular) {
+        this.titular = titular;
     }
 
     // === OPERAÇÕES ===
