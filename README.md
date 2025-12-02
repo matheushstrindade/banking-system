@@ -42,7 +42,7 @@ javac src/main/java/com/matheushstrindade/banking/*.java \
       src/main/java/com/matheushstrindade/banking/model/*.java
 
 # Executar
-java -cp src/main/java com.matheushstrindade.banking.App
+java -cp src/main/java com.matheushstrindade.banking.app.App
 ```
 
 Saída esperada:

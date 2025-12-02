@@ -1,4 +1,4 @@
-package com.matheushstrindade.banking;
+package com.matheushstrindade.banking.app;
 
 import com.matheushstrindade.banking.model.Cliente;
 import com.matheushstrindade.banking.model.Conta;
