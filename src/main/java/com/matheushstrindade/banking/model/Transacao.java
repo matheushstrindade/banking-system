@@ -6,14 +6,11 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Objects;
 
-public final class Transacao {  // classe final = ninguém herda
-
-    // === CAMPOS IMUTÁVEIS (final) ===
+public final class Transacao {
     private final Tipo tipo;
     private final BigDecimal valor;
     private final LocalDateTime dataHora;
 
-    // === ENUM TIPO (tipo seguro, sem risco de string errada) ===
     public enum Tipo {
         DEPOSITO("depósito"),
         SAQUE("saque");
@@ -29,7 +26,6 @@ public final class Transacao {  // classe final = ninguém herda
         }
     }
 
-    // === CONSTRUTOR PRIVADO ===
     private Transacao(Tipo tipo, BigDecimal valor) {
         this.tipo = Objects.requireNonNull(tipo, "Tipo da transação não pode ser nulo");
         this.valor = Objects.requireNonNull(valor, "Valor da transação não pode ser nulo")
