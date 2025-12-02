@@ -1,30 +1,38 @@
 # Banking System
 
-Sistema bancário **realista e extremamente bem escrito** em Java puro, seguindo as melhores práticas de 2025.
+Sistema bancário **brasileiro completo** em Java puro — feito com padrão de produção 2025.
 
-### Destaques (nível produção)
-- `BigDecimal` para valores monetários (nunca `double`!)
+Validação oficial de CPF • BigDecimal • Cliente com múltiplas contas • Extrato auditável • Clean Code total
+
+![Java 17+](https://img.shields.io/badge/Java-17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Clean Code](https://img.shields.io/badge/Clean_Code-✓-success)
+![BigDecimal](https://img.shields.io/badge/BigDecimal-✓-blue)
+
+### Destaques (nível fintech real)
 - Validação **oficial de CPF** (algoritmo da Receita Federal)
+- `BigDecimal` para valores monetários (nunca `double`)
 - Relacionamento bidirecional **Cliente ↔ Conta** (1:N) seguro e sem loop
-- Validação completa de entrada (nulo, negativo, futuro, duplicidade)
-- Estrutura de pacotes profissional
-- Mensagens claras em português brasileiro
-- Código limpo, seguro e pronto para escala
+- Transações **imutáveis** com enum + `LocalDateTime` (fuso SP)
+- Extrato auditável com valor sinalizado (+ depósito / - saque)
+- Zero gambiarra, zero dívida técnica
+- Código 100% limpo, seguro e pronto para produção
 
-## Funcionalidades atuais
+## Funcionalidades
 - Cadastro de cliente com CPF válido (ex: 529.982.247-25)
-- Criação de múltiplas contas por cliente (corrente, poupança, etc.)
-- Depósito e saque com validação total
-- Proteção contra titular inconsistente
-- Resumo completo do cliente com todas as suas contas
+- Múltiplas contas por cliente (corrente, poupança, etc.)
+- Depósito e saque com validação completa
+- Histórico de transações imutável e protegido
+- Extrato detalhado por conta
+- Resumo completo do cliente
 
 ## Estrutura do projeto
 ```bash
 src/main/java/com/matheushstrindade/banking/
 ├─ model/
-│   ├─ Cliente.java     ← com validação oficial de CPF
-│   └─ Conta.java       ← exige titular, relacionamento bidirecional
-└─ App.java              ← demonstração completa do fluxo real
+│   ├─ Cliente.java     → validação oficial de CPF + relacionamento
+│   ├─ Conta.java       → extrato imutável + operações seguras
+│   └─ Transacao.java   → imutável, enum, valor sinalizado
+└─ App.java             → demonstração completa com saída profissional
 ```
 
 ## Como executar
@@ -42,33 +50,32 @@ Saída esperada:
 Cliente criado: Matheus H. S. Trindade
 CPF: 529.982.247-25
 
-Criando conta corrente com saldo inicial...
-Conta criada → Conta{id=1, saldo=R$ 1500,00}
-Titular da conta: Matheus H. S. Trindade
-Total de contas do cliente: 1
+Criando conta corrente...
+Conta criada → Conta{id=1, saldo=R$ 1500,00, transações=0}
 
-Testando depósito com valor negativo...
-Depósito recusado → Valor do depósito deve ser maior que zero. Tentativa: R$ -5000,00
+=== OPERANDO NA CONTA CORRENTE ===
+Depósito de R$ 750,50 → Saldo: R$ 2250.50
+Saque de R$ 400,75 → Saldo: R$ 1849.75
 
-Testando depósito válido...
-Depósito aceito → Conta{id=1, saldo=R$ 2250,50}
+Criando conta poupança...
+Conta poupança criada → Conta{id=2, saldo=R$ 5000,00, transações=0}
 
-Testando saque acima do saldo...
-Saque bloqueado → Saldo insuficiente. Saldo atual: R$ 2250,50 | Tentativa de saque: R$ 10000,00
+=== EXTRATO DETALHADO - CONTA CORRENTE (ID 1) ===
+[2025-12-02] DEPÓSITO +R$ 750,50
+[2025-12-02] SAQUE -R$ 400,75
+──────────────────────────────────────────────────
+SALDO FINAL: R$ 1849.75
 
-Testando saque válido...
-Saque aceito → Conta{id=1, saldo=R$ 1849,75}
-
-Criando conta poupança para o mesmo cliente...
-Conta poupança criada → Conta{id=2, saldo=R$ 5000,00}
-Total de contas do cliente Matheus H. S. Trindade: 2
-
-=== RESUMO DO CLIENTE ===
+=== RESUMO COMPLETO DO CLIENTE ===
 Nome: Matheus H. S. Trindade
 CPF: 529.982.247-25
 Total de contas: 2
-  • Conta ID 1 → Saldo: R$ 1849.75
-  • Conta ID 2 → Saldo: R$ 5000.00
+
+Conta ID 1 | Saldo: R$ 1849.75 | Transações: 2
+Conta ID 2 | Saldo: R$ 5000.00 | Transações: 0
+
+Sistema bancário 100% funcional com extrato auditável.
+Próximos passos: Spring Boot + API REST + PostgreSQL + Docker
 ```
 
 ## Tecnologias
