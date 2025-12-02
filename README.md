@@ -79,9 +79,9 @@ Próximos passos: Spring Boot + API REST + PostgreSQL + Docker
 ```
 
 ## Tecnologias
-Java \
-BigDecimal \
-Clean%20Code
+- Java
+- BigDecimal
+- Clean%20Code
 
 ## Próximos passos
 - Transformar em API REST com Spring Boot
